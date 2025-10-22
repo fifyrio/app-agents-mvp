@@ -4,7 +4,7 @@ import 'firebase_service.dart';
 import 'analytics_service.dart';
 import 'subscribe_service.dart';
 import 'media_download_service.dart';
-import 'api/sova_api_service.dart';
+import 'api/api_service.dart';
 
 class ServiceLocator {
   static Future<void> init() async {
