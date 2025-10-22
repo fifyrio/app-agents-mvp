@@ -1,0 +1,14 @@
+name = "my-app-backend"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+# Uncomment to use a custom domain
+# routes = [
+#   { pattern = "api.example.com", custom_domain = true }
+# ]
+
+[env.development]
+name = "my-app-backend-dev"
+
+[env.production]
+name = "my-app-backend-prod"
