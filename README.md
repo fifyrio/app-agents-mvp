@@ -115,6 +115,21 @@ npm run deploy
 3. Run tests
 4. Submit a pull request
 
+## How to use
+
+正确使用 Agents 的方式：
+
+方式 1：直接请求使用特定 agent
+请使用 flutter-ui-expert agent 帮我创建一个登录页面
+
+方式 2：让 Claude 自动选择 agent
+当你的请求与某个 agent 的专业领域匹配时，Claude Code 会自动使用相应的
+agent。
+
+方式 3：在会话中明确指定
+让 backend-architect agent 设计一个用户认证 API
+
 ## License
 
 MIT
+
