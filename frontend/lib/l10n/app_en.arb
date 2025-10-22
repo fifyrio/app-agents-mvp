@@ -1,0 +1,272 @@
+{
+  "@@locale": "en",
+
+  "commonCancel": "Cancel",
+  "commonConfirm": "Confirm",
+  "commonSave": "Save",
+  "commonDelete": "Delete",
+  "commonRetry": "Retry",
+  "commonLoading": "Loading...",
+  "commonError": "Error",
+  "commonSuccess": "Success",
+  "commonClose": "Close",
+
+  "settingsTitle": "Settings",
+  "settingsLanguage": "Language",
+  "settingsTermsOfUse": "Terms of Use",
+  "settingsPrivacy": "Privacy",
+  "settingsHelpSupport": "Help & Support",
+  "settingsSelectLanguage": "Select Language",
+
+  "profileTitle": "Profile",
+  "profileHelloCreator": "Hello Creator",
+  "profileMyVideos": "My Videos",
+  "profileNoVideos": "No videos yet",
+  "profileCreateFirst": "Create your first video from the home page",
+
+  "homeCreate": "Create",
+  "homeTextToVideo": "Text to Video",
+  "homeImageToVideo": "Image to Video",
+  "homeGenerate": "Generate ({credit} credit)",
+  "@homeGenerate": {
+    "placeholders": {
+      "credit": {
+        "type": "String"
+      }
+    }
+  },
+  "homeGenerateUnlimited": "Generate (Unlimited)",
+  "homeGetPro": "Get Pro",
+  "homePro": "Pro",
+  "homeStyles": "Styles",
+  "homeInspireMe": "Inspire me",
+  "homeUploadImage": "Upload Image",
+  "homeImageReady": "Image Ready",
+  "homeUploading": "Uploading...",
+  "homeEnterPrompt": "Enter your prompt here...",
+  "homeAnimateImage": "Describe how you want to animate your image...",
+  "homeTryPrompts": "Try Prompts",
+  "homeStartingGeneration": "Starting Generation...",
+  "homeGeneratingVideo": "Generating Video...",
+  "homeViewVideo": "View Video",
+
+  "msgNoCredits": "No Credits",
+  "msgNoCreditsDesc": "You have no credits left. Upgrade to Pro for unlimited video generation!",
+  "msgEmptyPrompt": "Empty Prompt",
+  "msgEmptyPromptDesc": "Please enter a prompt to generate video",
+  "msgImageUploading": "Image Uploading",
+  "msgImageUploadingDesc": "Please wait for image upload to complete",
+  "msgNoImageUploaded": "No Image Uploaded",
+  "msgNoImageUploadedDesc": "Please upload an image for image-to-video generation",
+  "msgUploadComplete": "Upload Complete",
+  "msgUploadCompleteDesc": "Image uploaded successfully and ready for video generation",
+  "msgUploadFailed": "Upload Failed",
+  "msgUploadFailedDesc": "Failed to upload image: {error}",
+  "@msgUploadFailedDesc": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "msgStyleApplied": "Style Applied",
+  "msgStyleAppliedDesc": "{style} style has been selected",
+  "@msgStyleAppliedDesc": {
+    "placeholders": {
+      "style": {
+        "type": "String"
+      }
+    }
+  },
+  "msgInspirationReady": "Inspiration Ready!",
+  "msgInspirationReadyDesc": "AI has generated an enhanced prompt for you",
+  "msgInspirationFailed": "Inspiration Failed",
+  "msgInspirationFailedDesc": "Failed to get AI inspiration: {error}",
+  "@msgInspirationFailedDesc": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "msgCreditRefunded": "Credit Refunded",
+  "msgCreditRefundedDesc": "Your credit has been refunded due to generation failure.",
+  "msgLanguageChanged": "Language Changed",
+  "msgLanguageChangedDesc": "App language has been updated",
+  "msgCouldNotOpenLink": "Could not open the link",
+  "msgFailedToOpenLink": "Failed to open the link: {error}",
+  "@msgFailedToOpenLink": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "msgVideoFailed": "Video Failed",
+  "msgVideoFailedDesc": "This video generation failed",
+  "msgVideoProcessing": "Video Processing",
+  "msgVideoProcessingDesc": "This video is still being generated",
+  "msgLoadVideosFailed": "Failed to load videos: {error}",
+  "@msgLoadVideosFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "timeJustNow": "Just now",
+  "timeMinuteAgo": "1 minute ago",
+  "timeMinutesAgo": "{count} minutes ago",
+  "@timeMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "timeHourAgo": "1 hour ago",
+  "timeHoursAgo": "{count} hours ago",
+  "@timeHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "timeDayAgo": "1 day ago",
+  "timeDaysAgo": "{count} days ago",
+  "@timeDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "timeMonthAgo": "1 month ago",
+  "timeMonthsAgo": "{count} months ago",
+  "@timeMonthsAgo": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "timeYearAgo": "1 year ago",
+  "timeYearsAgo": "{count} years ago",
+  "@timeYearsAgo": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+
+  "videoResultTitle": "Result",
+  "videoLoadingVideo": "Loading video...",
+  "videoFailedToLoad": "Failed to load video",
+  "videoFailedToLoadDesc": "Failed to load video: {error}",
+  "@videoFailedToLoadDesc": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "videoPlayerNotAvailable": "Video player not available",
+  "videoShare": "Share",
+  "videoDownload": "Download",
+  "videoRegenerate": "Regenerate",
+  "videoCopy": "Copy",
+  "videoCopied": "Copied",
+  "videoCopiedDesc": "Title copied to clipboard",
+  "videoShareMessage": "Check out this AI-generated video: {url}",
+  "@videoShareMessage": {
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "videoShareSubject": "AI Generated Video from Sova",
+  "videoShareFailed": "Failed to share video. Please try again.",
+  "videoDownloadFailed": "Failed to download video. Please try again.",
+  "videoRegenerating": "Regenerating",
+  "videoRegeneratingDesc": "Please enter a new prompt to generate another video.",
+
+  "pricingTitle": "Unlock Full Potential",
+  "pricingSubtitle": "Create stunning videos with AI",
+  "pricingUnlimitedGeneration": "Unlimited video generation",
+  "pricingNoWatermarks": "No watermarks",
+  "pricingPriorityProcessing": "Priority processing",
+  "pricingWeekly": "Weekly",
+  "pricingWeeklyPrice": "$7.99/week",
+  "pricingMonthly": "Monthly",
+  "pricingMonthlyPrice": "$39.99/month",
+  "pricingBestValue": "BEST VALUE",
+  "pricingSubscribe": "Subscribe",
+  "pricingRestorePurchases": "Restore Purchases",
+  "pricingSubscriptionSuccess": "Subscription activated successfully!",
+  "pricingSubscriptionFailed": "Failed to process subscription",
+  "pricingRestoreSuccess": "Purchases restored successfully!",
+  "pricingRestoreFailed": "Failed to restore purchases",
+
+  "onboardingTitle1": "Generate Videos with AI Magic",
+  "onboardingDesc1": "Turn text or images into stunning AI-generated videos in seconds.",
+  "onboardingTitle2": "Transform Your Ideas Instantly",
+  "onboardingDesc2": "Create professional videos with just a prompt. No editing skills required.",
+  "onboardingTitle3": "Unlimited Creative Power",
+  "onboardingDesc3": "Bring your imagination to life with cutting-edge AI video generation.",
+  "onboardingNext": "Next",
+
+  "promptPreviewPrompt": "Prompt",
+  "promptPreviewTryUsecase": "Try this usecase",
+  "promptPreviewFailedToLoad": "Failed to load media",
+  "promptPreviewGif": "GIF",
+
+  "analyzeVideoTitle": "Analyze Video",
+  "analyzeVideoAnalyzeImages": "Analyze Images",
+  "analyzeVideoHelp": "Help",
+  "analyzeVideoHelpMessage": "Video analysis help coming soon",
+  "analyzeVideoImportVideo": "Import Video",
+  "analyzeVideoUploadVideo": "Upload Video",
+  "analyzeVideoSupportedFormats": "Supported formats: MP4, MOV, AVI | Max duration: 5 minutes",
+  "analyzeVideoVideoPreview": "Video Preview",
+  "analyzeVideoAnalysisPanel": "Analysis Panel",
+  "analyzeVideoAnalyzeButton": "Analyze Video",
+  "analyzeVideoAnalyzing": "Analyzing...",
+  "analyzeVideoExtractingThumbnail": "Extracting thumbnail...",
+  "analyzeVideoUploadingThumbnail": "Uploading thumbnail...",
+  "analyzeVideoAiAnalyzing": "AI analyzing...",
+  "analyzeVideoUploadProgress": "Upload: {progress}%",
+  "analyzeVideoGeneratedPrompts": "AI Generated Prompts",
+  "analyzeVideoSelectPrompt": "Select a prompt to use or customize it below",
+  "analyzeVideoOption": "Option {number}",
+  "analyzeVideoPromptPanel": "Prompt Panel",
+  "analyzeVideoEnterPrompt": "Enter your prompt...",
+  "analyzeVideoSeed": "Seed",
+  "analyzeVideoCopy": "Copy",
+  "analyzeVideoClear": "Clear",
+  "analyzeVideoError": "Error",
+  "analyzeVideoFailedToSelect": "Failed to select video: {error}",
+  "analyzeVideoFailedToLoad": "Failed to load video: {error}",
+  "analyzeVideoNoVideo": "No Video",
+  "analyzeVideoNoVideoMessage": "Please select a video first",
+  "analyzeVideoEmptyPrompt": "Empty Prompt",
+  "analyzeVideoEmptyPromptMessage": "No prompt text to copy",
+  "analyzeVideoCopied": "Copied",
+  "analyzeVideoCopiedMessage": "Prompt copied to clipboard",
+  "analyzeVideoSuccess": "Success",
+  "analyzeVideoSuccessMessage": "Generated {count} prompt suggestions",
+  "analyzeVideoAnalysisFailed": "Analysis Failed",
+
+  "langEnglish": "English",
+  "langChinese": "简体中文",
+  "langGerman": "Deutsch",
+  "langIcelandic": "Íslenska",
+
+  "navHome": "Home",
+  "navStudio": "Studio",
+  "navAnalyze": "Analyze",
+  "navProfile": "Profile"
+}
