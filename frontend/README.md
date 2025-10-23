@@ -1,3 +1,5 @@
+getx-app-entry-reviewer 初始化app的入口文件
+
 # Frontend - Flutter Application
 
 A Flutter application with GetX state management, powered by Claude Code agents for intelligent development assistance.

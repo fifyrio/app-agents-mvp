@@ -4,6 +4,7 @@ import 'firebase_service.dart';
 import 'analytics_service.dart';
 import 'subscribe_service.dart';
 import 'media_download_service.dart';
+import 'app_tracking_service.dart';
 import 'api/api_service.dart';
 
 class ServiceLocator {
@@ -22,11 +23,14 @@ class ServiceLocator {
     Get.put(SubscribeService(), permanent: true);
     Get.put(MediaDownloadService(), permanent: true);
 
-    // Step 5: Initialize localization (service + controller)
+    // Step 5: Initialize App Tracking Service (iOS ATT)
+    Get.put(AppTrackingService(), permanent: true);
+
+    // Step 6: Initialize localization (service + controller)
     await LocalizationBinding.ensureInitialized();
 
-    // Step 6: Trigger onInit() for services that need it
-    await Get.find<SubscribeService>().onInit();
-    Get.find<ApiService>().onInit();
+    // Note: GetX automatically calls onInit() for all GetxService instances
+    // when they are registered with Get.put(). No need to manually call onInit()
+    // unless you have specific initialization order requirements.
   }
 }
