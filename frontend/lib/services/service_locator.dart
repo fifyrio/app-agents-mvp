@@ -4,7 +4,7 @@ import 'firebase_service.dart';
 import 'analytics_service.dart';
 import 'subscribe_service.dart';
 import 'media_download_service.dart';
-import 'api_service.dart';
+import 'api/api_service.dart';
 
 class ServiceLocator {
   static Future<void> init() async {
@@ -12,7 +12,7 @@ class ServiceLocator {
     final firebaseService = Get.put(FirebaseService(), permanent: true);
     await firebaseService.onInit();
 
-    // Step 2: Initialize core services
+    // Step 2: Initialize core services (API with Mixin architecture)
     Get.put(ApiService(), permanent: true);
 
     // Step 3: Initialize services that depend on Firebase
