@@ -6,6 +6,8 @@ import '../pages/onboarding/onboarding_page.dart';
 import '../pages/home/home_page.dart';
 import '../pages/settings/settings_page.dart';
 import '../pages/settings/settings_binding.dart';
+import '../pages/subscription/subscription_page.dart';
+import '../pages/subscription/subscription_binding.dart';
 
 /// 应用页面配置
 ///
@@ -58,6 +60,7 @@ class AppPages {
     GetPage(
       name: AppRoutes.subscription,
       page: () => const SubscriptionPage(),
+      binding: SubscriptionBinding(),
       transition: Transition.downToUp,
       transitionDuration: const Duration(milliseconds: 300),
     ),
@@ -134,19 +137,6 @@ class AppPages {
 
 // ==================== 临时占位页面 ====================
 // 这些是临时占位页面，实际开发时应该创建独立的文件
-
-/// 订阅页（占位）
-class SubscriptionPage extends StatelessWidget {
-  const SubscriptionPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('订阅管理')),
-      body: const Center(child: Text('订阅页面 - 待实现')),
-    );
-  }
-}
 
 /// 颜色分析页（占位）
 class ColorAnalysisPage extends StatelessWidget {
