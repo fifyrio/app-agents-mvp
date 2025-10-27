@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'tabs/color_analysis_tab.dart';
 import 'tabs/wardrobe_tab.dart';
-import 'tabs/history_tab.dart';
 import 'tabs/confidence_tab.dart';
 import 'tabs/profile_tab.dart';
 
-/// 主页
+/// 主页面容器
 ///
 /// 使用IndexedStack实现底部导航，保持各Tab状态
-class HomePage extends StatefulWidget {
-  const HomePage({super.key, this.initialIndex = 0});
+/// 包含4个主要Tab: Home(ColorAnalysis), Wardrobe, Confidence, Profile
+class MainPage extends StatefulWidget {
+  const MainPage({super.key, this.initialIndex = 0});
 
   final int initialIndex;
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _MainPageState extends State<MainPage> {
   late int _currentIndex;
 
   @override
@@ -30,7 +30,6 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _pages = const [
     ColorAnalysisTab(),
     WardrobeTab(),
-    HistoryTab(),
     ConfidenceTab(),
     ProfileTab(),
   ];
@@ -102,25 +101,18 @@ class _CustomBottomNavBar extends StatelessWidget {
               onTap: () => onTap(1),
             ),
             _NavBarItem(
-              icon: Icons.palette_outlined,
-              activeIcon: Icons.palette,
-              label: 'Palettes',
-              isActive: currentIndex == 2,
-              onTap: () => onTap(2),
-            ),
-            _NavBarItem(
               icon: Icons.favorite_outline,
               activeIcon: Icons.favorite,
               label: 'Confidence',
-              isActive: currentIndex == 3,
-              onTap: () => onTap(3),
+              isActive: currentIndex == 2,
+              onTap: () => onTap(2),
             ),
             _NavBarItem(
               icon: Icons.person_outline,
               activeIcon: Icons.person,
               label: 'Profile',
-              isActive: currentIndex == 4,
-              onTap: () => onTap(4),
+              isActive: currentIndex == 3,
+              onTap: () => onTap(3),
             ),
           ],
         ),

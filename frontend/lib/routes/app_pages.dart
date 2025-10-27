@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'app_routes.dart';
 import '../pages/splash/splash_page.dart';
 import '../pages/onboarding/onboarding_page.dart';
-import '../pages/home/home_page.dart';
+import '../pages/home/main_page.dart';
 import '../pages/settings/settings_page.dart';
 import '../pages/settings/settings_binding.dart';
 import '../pages/subscription/subscription_page.dart';
@@ -38,11 +38,11 @@ class AppPages {
       transitionDuration: const Duration(milliseconds: 300),
     ),
 
-    // ==================== 主页 ====================
+    // ==================== 主页面容器 ====================
     GetPage(
       name: AppRoutes.home,
-      page: () => const HomePage(),
-      // binding: HomeBinding(), // 如果需要的话可以添加
+      page: () => const MainPage(),
+      // binding: MainBinding(), // 如果需要的话可以添加
       transition: Transition.fadeIn,
       transitionDuration: const Duration(milliseconds: 400),
     ),
