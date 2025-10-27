@@ -52,6 +52,17 @@ class SubscriptionController extends GetxController {
     );
   }
 
+  /// 恢复购买
+  Future<void> restorePurchase() async {
+    // TODO: 实现实际的恢复购买逻辑
+    Get.snackbar(
+      'Restore Purchase',
+      'Restoring previous purchases...',
+      snackPosition: SnackPosition.BOTTOM,
+      duration: const Duration(seconds: 2),
+    );
+  }
+
   /// 关闭订阅页面
   void close() {
     Get.back();

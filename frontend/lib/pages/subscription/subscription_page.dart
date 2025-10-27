@@ -344,7 +344,25 @@ class SubscriptionPage extends GetView<SubscriptionController> {
             ),
           ),
 
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
+
+          // Restore Purchase 按钮
+          TextButton(
+            onPressed: () => controller.restorePurchase(),
+            style: TextButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 12),
+            ),
+            child: Text(
+              'Restore Purchase',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Colors.grey[700],
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 12),
 
           // 条款文本
           RichText(
