@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-/// Wardrobe Tab - Explore outfits by color category
+/// Wardrobe Tab - Explore Your Perfect Looks
+///
+/// AI suggests outfits and color palettes for every occasion
 class WardrobeTab extends StatefulWidget {
   const WardrobeTab({super.key});
 
@@ -10,25 +12,41 @@ class WardrobeTab extends StatefulWidget {
 }
 
 class _WardrobeTabState extends State<WardrobeTab> {
-  String _selectedFilter = 'All';
+  String _selectedOccasion = 'All';
 
-  // Color filter categories
-  static const List<String> _filterCategories = ['All', 'Warm', 'Cool', 'Neutral'];
+  // Occasion categories matching the design
+  static const List<String> _occasions = [
+    'All',
+    'Work',
+    'Date',
+    'Travel',
+    'Party',
+    'Interview',
+  ];
+
+  // Theme colors
+  static const Color primaryPurple = Color(0xFF7C3AED);
+  static const Color backgroundColor = Color(0xFFF5F5F5);
+  static const Color textPrimary = Color(0xFF000000);
+  static const Color textSecondary = Color(0xFF6B7280);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F8F8),
+      backgroundColor: backgroundColor,
       body: SafeArea(
         child: Column(
           children: [
-            // Custom App Bar
-            _buildAppBar(context),
+            // Header with menu, title, and search
+            _buildHeader(),
 
-            // Filter Tabs
-            _buildFilterTabs(),
+            // Subtitle description
+            _buildSubtitle(),
 
-            // Outfit Grid
+            // Occasion tabs
+            _buildOccasionTabs(),
+
+            // Outfit cards grid
             Expanded(
               child: _buildOutfitGrid(),
             ),
@@ -38,129 +56,138 @@ class _WardrobeTabState extends State<WardrobeTab> {
     );
   }
 
-  /// Custom app bar with hamburger menu, title, and search icon
-  Widget _buildAppBar(BuildContext context) {
+  /// Build header with hamburger menu, title, and search icon
+  Widget _buildHeader() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       color: Colors.white,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // Hamburger Menu
-          InkWell(
-            onTap: () {
+          // Hamburger menu
+          IconButton(
+            icon: const Icon(Icons.menu, size: 24),
+            onPressed: () {
               Get.snackbar(
                 'Menu',
-                'Opening navigation menu',
+                'Navigation menu',
                 snackPosition: SnackPosition.BOTTOM,
               );
             },
-            borderRadius: BorderRadius.circular(8),
-            child: const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Icon(
-                Icons.menu,
-                size: 26,
-                color: Colors.black87,
-              ),
-            ),
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(),
           ),
 
           // Title
           const Expanded(
             child: Text(
-              'Explore',
+              'Explore Your Perfect Looks',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 18,
                 fontWeight: FontWeight.w600,
-                color: Colors.black,
-                letterSpacing: -0.4,
+                color: textPrimary,
+                letterSpacing: -0.3,
               ),
             ),
           ),
 
-          // Search Icon
-          InkWell(
-            onTap: () {
+          // Search icon
+          IconButton(
+            icon: const Icon(Icons.search, size: 24),
+            onPressed: () {
               Get.snackbar(
                 'Search',
-                'Search functionality coming soon',
+                'Search outfits',
                 snackPosition: SnackPosition.BOTTOM,
               );
             },
-            borderRadius: BorderRadius.circular(8),
-            child: const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Icon(
-                Icons.search,
-                size: 26,
-                color: Colors.black87,
-              ),
-            ),
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(),
           ),
         ],
       ),
     );
   }
 
-  /// Filter tabs for color categories
-  Widget _buildFilterTabs() {
+  /// Build subtitle description
+  Widget _buildSubtitle() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
       color: Colors.white,
-      child: Row(
-        children: _filterCategories.map((category) {
-          final isActive = _selectedFilter == category;
-          return Expanded(
-            child: GestureDetector(
-              onTap: () {
-                setState(() {
-                  _selectedFilter = category;
-                });
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: isActive
-                          ? const Color(0xFF7C3AED)
-                          : Colors.transparent,
-                      width: 2,
-                    ),
-                  ),
+      child: const Text(
+        'AI suggests outfits and color palettes for every occasion.',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+          color: textSecondary,
+          height: 1.4,
+          letterSpacing: -0.1,
+        ),
+      ),
+    );
+  }
+
+  /// Build occasion tabs
+  Widget _buildOccasionTabs() {
+    return Container(
+      height: 48,
+      margin: const EdgeInsets.only(top: 16, bottom: 16),
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        itemCount: _occasions.length,
+        itemBuilder: (context, index) {
+          final occasion = _occasions[index];
+          final isSelected = _selectedOccasion == occasion;
+
+          return GestureDetector(
+            onTap: () {
+              setState(() {
+                _selectedOccasion = occasion;
+              });
+            },
+            child: Container(
+              margin: const EdgeInsets.only(right: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              decoration: BoxDecoration(
+                color: isSelected ? primaryPurple : Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: isSelected ? primaryPurple : const Color(0xFFE5E7EB),
+                  width: 1,
                 ),
+              ),
+              child: Center(
                 child: Text(
-                  category,
-                  textAlign: TextAlign.center,
+                  occasion,
                   style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
-                    color: isActive
-                        ? const Color(0xFF7C3AED)
-                        : const Color(0xFF9E9E9E),
-                    letterSpacing: -0.2,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: isSelected ? Colors.white : textSecondary,
+                    letterSpacing: -0.1,
                   ),
                 ),
               ),
             ),
           );
-        }).toList(),
+        },
       ),
     );
   }
 
-  /// Outfit grid with 2-column layout
+  /// Build outfit grid
   Widget _buildOutfitGrid() {
     final outfits = _getFilteredOutfits();
 
     return GridView.builder(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 16,
-        mainAxisSpacing: 16,
-        childAspectRatio: 0.75,
+        mainAxisSpacing: 20,
+        childAspectRatio: 0.58, // Increased height for more content space
       ),
       itemCount: outfits.length,
       itemBuilder: (context, index) {
@@ -169,96 +196,115 @@ class _WardrobeTabState extends State<WardrobeTab> {
     );
   }
 
-  /// Get filtered outfits based on selected category
+  /// Get filtered outfits based on selected occasion
   List<_OutfitData> _getFilteredOutfits() {
     final allOutfits = _getMockOutfits();
-    if (_selectedFilter == 'All') {
+    if (_selectedOccasion == 'All') {
       return allOutfits;
     }
-    return allOutfits.where((outfit) => outfit.category == _selectedFilter).toList();
+    return allOutfits
+        .where((outfit) => outfit.occasion == _selectedOccasion)
+        .toList();
   }
 
-  /// Mock outfit data - in production, this would come from an API
+  /// Mock outfit data matching the design
   List<_OutfitData> _getMockOutfits() {
     return [
       _OutfitData(
-        category: 'Warm',
-        imageUrl: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400',
+        title: 'Chic City Brunch',
+        description: 'Cool summer palette',
+        occasion: 'Date',
+        isPremium: true,
+        imageUrl: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400',
         colors: [
-          const Color(0xFFE5B299),
-          const Color(0xFFD4A574),
-          const Color(0xFFC2905F),
-          const Color(0xFF8B6F47),
+          const Color(0xFF2C3E50),
+          const Color(0xFFFFC0CB),
+          const Color(0xFF95A5A6),
         ],
       ),
       _OutfitData(
-        category: 'Cool',
-        imageUrl: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400',
+        title: 'Boardroom Ready',
+        description: 'Deep winter power look',
+        occasion: 'Work',
+        isPremium: false,
+        imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400',
         colors: [
-          const Color(0xFFFFB6C1),
-          const Color(0xFFFF69B4),
-          const Color(0xFFDA70D6),
-          const Color(0xFF9370DB),
+          const Color(0xFF1C2833),
+          const Color(0xFFE74C3C),
+          const Color(0xFF7F8C8D),
         ],
       ),
       _OutfitData(
-        category: 'Neutral',
-        imageUrl: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400',
+        title: 'Sunset Dinner Date',
+        description: 'Warm autumn romance',
+        occasion: 'Date',
+        isPremium: false,
+        imageUrl: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=400',
         colors: [
-          const Color(0xFFE5E5E5),
-          const Color(0xFFB8B8B8),
-          const Color(0xFF737373),
-          const Color(0xFF404040),
+          const Color(0xFFD35400),
+          const Color(0xFFC0392B),
+          const Color(0xFFF39C12),
+          const Color(0xFFE67E22),
         ],
       ),
       _OutfitData(
-        category: 'Warm',
+        title: 'Casual Weekend Wander',
+        description: 'Soft spring comfort',
+        occasion: 'Travel',
+        isPremium: false,
+        imageUrl: 'https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=400',
+        colors: [
+          const Color(0xFF27AE60),
+          const Color(0xFF3498DB),
+          const Color(0xFFFFC0CB),
+        ],
+      ),
+      _OutfitData(
+        title: 'Garden Party Elegance',
+        description: 'Bright spring florals',
+        occasion: 'Party',
+        isPremium: true,
+        imageUrl: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400',
+        colors: [
+          const Color(0xFFE91E63),
+          const Color(0xFF9C27B0),
+          const Color(0xFFFFC107),
+        ],
+      ),
+      _OutfitData(
+        title: 'Professional Presence',
+        description: 'Classic interview ready',
+        occasion: 'Interview',
+        isPremium: false,
+        imageUrl: 'https://images.unsplash.com/photo-1551232864-3f0890e580d9?w=400',
+        colors: [
+          const Color(0xFF34495E),
+          const Color(0xFFECF0F1),
+          const Color(0xFF2C3E50),
+        ],
+      ),
+      _OutfitData(
+        title: 'Travel in Style',
+        description: 'Comfortable chic',
+        occasion: 'Travel',
+        isPremium: true,
         imageUrl: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400',
         colors: [
-          const Color(0xFFFF6B6B),
-          const Color(0xFFFF8E53),
-          const Color(0xFFE63946),
-          const Color(0xFFB71C1C),
-        ],
-      ),
-      _OutfitData(
-        category: 'Cool',
-        imageUrl: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400',
-        colors: [
-          const Color(0xFF87CEEB),
-          const Color(0xFF4682B4),
-          const Color(0xFF4169E1),
-          const Color(0xFF191970),
-        ],
-      ),
-      _OutfitData(
-        category: 'Neutral',
-        imageUrl: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400',
-        colors: [
-          const Color(0xFFF5F5DC),
-          const Color(0xFFD3C6AA),
-          const Color(0xFFA89968),
-          const Color(0xFF6B5D4F),
-        ],
-      ),
-      _OutfitData(
-        category: 'Warm',
-        imageUrl: 'https://images.unsplash.com/photo-1467043237213-65f2da53396f?w=400',
-        colors: [
-          const Color(0xFFFFA07A),
-          const Color(0xFFFF7F50),
-          const Color(0xFFFF6347),
+          const Color(0xFF8B4513),
           const Color(0xFFD2691E),
+          const Color(0xFFDEB887),
         ],
       ),
       _OutfitData(
-        category: 'Cool',
-        imageUrl: 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=400',
+        title: 'Office Power Move',
+        description: 'Bold confidence',
+        occasion: 'Work',
+        isPremium: false,
+        imageUrl: 'https://images.unsplash.com/photo-1592328715880-e335f08cb905?w=400',
         colors: [
-          const Color(0xFFDDA0DD),
-          const Color(0xFFBA55D3),
-          const Color(0xFF9932CC),
-          const Color(0xFF8B008B),
+          const Color(0xFFB22222),
+          const Color(0xFF000000),
+          const Color(0xFFFFFFFF),
         ],
       ),
     ];
@@ -267,12 +313,18 @@ class _WardrobeTabState extends State<WardrobeTab> {
 
 /// Data model for outfit items
 class _OutfitData {
-  final String category;
+  final String title;
+  final String description;
+  final String occasion;
+  final bool isPremium;
   final String imageUrl;
   final List<Color> colors;
 
   _OutfitData({
-    required this.category,
+    required this.title,
+    required this.description,
+    required this.occasion,
+    required this.isPremium,
     required this.imageUrl,
     required this.colors,
   });
@@ -284,164 +336,186 @@ class _OutfitCard extends StatelessWidget {
 
   final _OutfitData outfit;
 
+  static const Color primaryPurple = Color(0xFF7C3AED);
+  static const Color lightPurple = Color(0xFFEDE9FE);
+
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Get.snackbar(
-          'Outfit',
-          'View ${outfit.category} outfit details',
-          snackPosition: SnackPosition.BOTTOM,
-        );
-      },
-      borderRadius: BorderRadius.circular(24),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(24),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.08),
-              blurRadius: 16,
-              offset: const Offset(0, 4),
-            ),
-          ],
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Image with category badge
-            Expanded(
-              child: Stack(
-                children: [
-                  // Outfit Image
-                  ClipRRect(
-                    borderRadius: const BorderRadius.vertical(
-                      top: Radius.circular(24),
-                    ),
-                    child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: _getCategoryBackgroundColor(outfit.category),
-                      ),
-                      child: Image.network(
-                        outfit.imageUrl,
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) {
-                          // Fallback for images that fail to load
-                          return Center(
-                            child: Icon(
-                              Icons.checkroom,
-                              size: 48,
-                              color: Colors.grey[400],
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(24),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.06),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Image with premium badge
+          Expanded(
+            flex: 10,
+            child: _buildImage(),
+          ),
 
-                  // Category Badge
-                  Positioned(
-                    top: 12,
-                    left: 12,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 6,
-                      ),
-                      decoration: BoxDecoration(
-                        color: _getCategoryBadgeColor(outfit.category),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: Text(
-                        outfit.category,
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          color: _getCategoryTextColor(outfit.category),
-                          letterSpacing: -0.1,
-                        ),
-                      ),
-                    ),
+          // Title and description
+          Padding(
+            padding: const EdgeInsets.fromLTRB(12, 10, 12, 6),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  outfit.title,
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                    letterSpacing: -0.2,
                   ),
-                ],
-              ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 3),
+                Text(
+                  outfit.description,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xFF6B7280),
+                    letterSpacing: -0.1,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
             ),
+          ),
 
-            // Color palette dots
-            Padding(
-              padding: const EdgeInsets.all(12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: outfit.colors.map((color) {
-                  return Container(
-                    width: 28,
-                    height: 28,
-                    decoration: BoxDecoration(
-                      color: color,
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 2,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.1),
-                          blurRadius: 4,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
+          // Color palette dots
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: Row(
+              children: outfit.colors.map((color) {
+                return Container(
+                  width: 18,
+                  height: 18,
+                  margin: const EdgeInsets.only(right: 5),
+                  decoration: BoxDecoration(
+                    color: color,
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 1.5,
                     ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.15),
+                        blurRadius: 3,
+                        offset: const Offset(0, 1),
+                      ),
+                    ],
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          // AI Generate button
+          Padding(
+            padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+            child: SizedBox(
+              width: double.infinity,
+              height: 36,
+              child: ElevatedButton(
+                onPressed: () {
+                  Get.snackbar(
+                    'AI Generate',
+                    'Generating outfit for ${outfit.title}',
+                    snackPosition: SnackPosition.BOTTOM,
                   );
-                }).toList(),
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: lightPurple,
+                  foregroundColor: primaryPurple,
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18),
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                ),
+                child: const Text(
+                  'AI Generate My Outfit',
+                  style: TextStyle(
+                    fontSize: 11.5,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: -0.1,
+                  ),
+                ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 
-  /// Get badge background color for category
-  Color _getCategoryBadgeColor(String category) {
-    switch (category) {
-      case 'Warm':
-        return const Color(0xFFFFE5D9);
-      case 'Cool':
-        return const Color(0xFFFFD9E5);
-      case 'Neutral':
-        return const Color(0xFFE5E5E5);
-      default:
-        return const Color(0xFFE5E5E5);
-    }
-  }
+  /// Build image with premium badge
+  Widget _buildImage() {
+    return ClipRRect(
+      borderRadius: const BorderRadius.vertical(
+        top: Radius.circular(24),
+      ),
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          // Outfit image
+          Container(
+            color: const Color(0xFFF5F5F5),
+            child: Image.network(
+              outfit.imageUrl,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Center(
+                  child: Icon(
+                    Icons.checkroom,
+                    size: 48,
+                    color: Colors.grey[300],
+                  ),
+                );
+              },
+            ),
+          ),
 
-  /// Get badge text color for category
-  Color _getCategoryTextColor(String category) {
-    switch (category) {
-      case 'Warm':
-        return const Color(0xFFD2691E);
-      case 'Cool':
-        return const Color(0xFFDA70D6);
-      case 'Neutral':
-        return const Color(0xFF737373);
-      default:
-        return const Color(0xFF737373);
-    }
-  }
-
-  /// Get background color for category when image fails to load
-  Color _getCategoryBackgroundColor(String category) {
-    switch (category) {
-      case 'Warm':
-        return const Color(0xFFFFF5EE);
-      case 'Cool':
-        return const Color(0xFFFFF0F5);
-      case 'Neutral':
-        return const Color(0xFFF5F5F5);
-      default:
-        return const Color(0xFFF5F5F5);
-    }
+          // Premium badge
+          if (outfit.isPremium)
+            Positioned(
+              top: 10,
+              left: 10,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                decoration: BoxDecoration(
+                  color: primaryPurple,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Text(
+                  'Premium',
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                    letterSpacing: 0.2,
+                  ),
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
   }
 }
