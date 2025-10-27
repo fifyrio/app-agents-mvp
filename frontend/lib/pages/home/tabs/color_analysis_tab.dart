@@ -79,22 +79,26 @@ class ColorAnalysisTab extends StatelessWidget {
           ),
         ),
 
-        // Notification Bell
-        InkWell(
-          onTap: () {
-            Get.snackbar(
-              '通知',
-              '暂无新通知',
-              snackPosition: SnackPosition.BOTTOM,
-            );
+        // Get Pro Button
+        ElevatedButton(
+          onPressed: () {
+            Get.toNamed(AppRoutes.subscription);
           },
-          borderRadius: BorderRadius.circular(12),
-          child: Container(
-            padding: const EdgeInsets.all(8),
-            child: const Icon(
-              Icons.notifications_outlined,
-              size: 28,
-              color: Colors.black87,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color(0xFF7C3AED),
+            foregroundColor: Colors.white,
+            elevation: 0,
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
+          child: const Text(
+            'Get Pro',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              letterSpacing: -0.1,
             ),
           ),
         ),
