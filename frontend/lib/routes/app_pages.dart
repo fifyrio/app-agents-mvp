@@ -3,11 +3,13 @@ import 'package:get/get.dart';
 import 'app_routes.dart';
 import '../pages/splash/splash_page.dart';
 import '../pages/onboarding/onboarding_page.dart';
-import '../pages/home/main_page.dart';
+import '../pages/main_page.dart';
 import '../pages/settings/settings_page.dart';
 import '../pages/settings/settings_binding.dart';
 import '../pages/subscription/subscription_page.dart';
 import '../pages/subscription/subscription_binding.dart';
+import '../pages/share_result/share_result_page.dart';
+import '../pages/share_result/share_result_binding.dart';
 
 /// 应用页面配置
 ///
@@ -129,6 +131,15 @@ class AppPages {
     GetPage(
       name: AppRoutes.language,
       page: () => const LanguagePage(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 300),
+    ),
+
+    // ==================== 分享AI结果页 ====================
+    GetPage(
+      name: AppRoutes.shareResult,
+      page: () => const ShareResultPage(),
+      binding: ShareResultBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 300),
     ),

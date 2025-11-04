@@ -54,6 +54,9 @@ class AppRoutes {
   /// 语言设置
   static const String language = '/language';
 
+  /// 分享AI结果页
+  static const String shareResult = '/share-result';
+
   // ==================== 工具方法 ====================
 
   /// 获取所有路由列表（用于调试）
@@ -72,5 +75,6 @@ class AppRoutes {
     terms,
     help,
     language,
+    shareResult,
   ];
 }
